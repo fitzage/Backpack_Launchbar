@@ -1,0 +1,37 @@
+h3. Usage
+
+There are two scripts here. One of them adds notes to pages on "Backpack":http://backpackit.com, and the other adds list items to Backpack lists.
+
+The way the scripts are currently design, you need to set them up with the information for a specific page (for the note script) or a specific list (for the list item script). You can have as many scripts as you want with different names to post to different pages or lists. I did it this way partly because I didn't want to go to the programming work of pulling in the page or list info first and then posting to whichever you select, but partly because I wanted as few steps as possible to get the item into the system.
+
+h3. Requirements
+
+# A Mac running "LaunchBar":http://www.obdev.at/products/launchbar/index.html
+# A "Backpack":http://backpackit.com account
+
+h3. Instructions
+
+Open the scripts in AppleScript Editor or TextMate. There are several variables at the top of the file that you'll need to fill in.
+
+h4. Variables
+
+# YOUR_API_KEY: You can find your API key by clicking on "My Info" in the top right corner of any page on your Backpack account. There is a link at the bottom of the My Info page to "show your tokens." You'll need the one labeled "Token for the Backpack API."
+# YOUR_ACCOUNT_NAME: The name of your backpack account (i.e., ACCOUNTNAME.backpackit.com)
+# BACKPACK_PAGE_ID: When you visit the backpack page you want to post to, this is the number that shows up in the URL.
+# BACKPACK_LIST_ID: For the list item script, you'll need to find the list ID. This isn't exactly a straightforward process. The easiest way is to right click on the list title and choose "Inspect Element" in Safari or Chrome. This will give you a view with the list title selected, that will say something like the code below, where the number after show_list is your list ID.
+
+<code><highlightable hover_container="show_list_888888">Foo Bar</highlighteable></code>
+
+# You'll also need to decide whether or not you're using SSL. If your account level is high enough to include SSL, enter "yes" for that variable. If not, enter "no."
+
+h4. Installation
+
+Now save the scripts in ~/Library/Application Support/LaunchBar/Actions/ using whatever name you want to use. Using the name of the page or list in the title is probably advisable if you're going to have multiple pages and/or lists.
+
+Relaunch LaunchBar or refresh the LaunchBar index, and you're ready to go.
+
+h4. Usage
+
+To use the script, call it up in LaunchBar and hit space bar to enter text entry mode. Enter your text and hit enter to post to Backpack.
+
+The note script has some additional syntax that the list item script doesn't have. If you want to include a title for your note, you can put the title first and separate it from the body with a colon. If you want something other than a colon, you can edit the AppleScript and change "set text item delimiters to" from a colon to whatever you want. I presume that requiring double colons or something would also work, but I've never tried it.
